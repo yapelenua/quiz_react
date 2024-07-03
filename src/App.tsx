@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
+import QuizPage1 from './pages/QuizPage1';
+import QuizPage2 from './pages/QuizPage2';
+import QuizPage3 from './pages/QuizPage3';
+import QuizPage4 from './pages/QuizPage4';
+import QuizPage5 from './pages/QuizPage5';
+import LoaderPage from './pages/LoaderPage';
+import EmailPage from './pages/EmailPage';
+import ThankYouPage from './pages/ThankYouPage';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <Router>
+        <Routes>
+          <Route path="/quiz/1" element={<QuizPage1 />} />
+          <Route path="/quiz/2" element={<QuizPage2 />} />
+          <Route path="/quiz/3" element={<QuizPage3 />} />
+          <Route path="/quiz/4" element={<QuizPage4 />} />
+          <Route path="/quiz/5" element={<QuizPage5 />} />
+          <Route path="/loader" element={<LoaderPage />} />
+          <Route path="/email" element={<EmailPage />} />
+          <Route path="/thank" element={<ThankYouPage />} />
+          <Route path="/" element={<QuizPage1 />} />
+        </Routes>
+      </Router>
+    </I18nextProvider>
   );
-}
+};
 
 export default App;
