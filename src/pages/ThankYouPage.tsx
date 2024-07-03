@@ -6,6 +6,7 @@ import { MainWrapper } from '../styles/MainWrapper';
 import { Wrapper } from '../styles/Wrapper';
 import { StyledButton } from '../styles/Button';
 import checkmark from '../images/checkmark.svg';
+import download from '../images/download.svg';
 
 const ThankYouPage: React.FC = () => {
   const { t } = useTranslation();
@@ -31,7 +32,10 @@ const ThankYouPage: React.FC = () => {
       <Wrapper>
         <h1>{t('thank')}</h1>
         <img src={checkmark} alt="Checkmark" style={{ width: '100px', height: '100px' }} />
-        <p onClick={handleDownload}>{t('download')}</p>
+        <p onClick={handleDownload} style={{ cursor: 'pointer' }}>
+          <img src={download} alt="Download" style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+          {t('download')}
+        </p>
         <StyledButton onClick={() => navigate('/quiz/1')}>{t('retake')}</StyledButton>
       </Wrapper>
     </MainWrapper>
